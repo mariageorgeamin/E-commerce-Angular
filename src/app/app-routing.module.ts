@@ -10,13 +10,12 @@ import { SingleproductComponent } from "./components/singleproduct/singleproduct
 import { NotfoundComponent } from "./components/notfound/notfound.component";
 
 const routes: Routes = [
-  { path: "", component: AppComponent },
-  { path: "/home", component: HomeComponent },
-  { path: "/login", component: LoginComponent },
-  { path: "/cart", component: CartComponent },
-  { path: "/signup", component: SignupComponent },
-  { path: "/wishlist", component: WishlistComponent },
-  { path: "/singleproduct", component: SingleproductComponent },
+  { path: "home", component: HomeComponent },
+  { path: "login", component: LoginComponent },
+  { path: "cart", component: CartComponent },
+  { path: "signup", component: SignupComponent },
+  { path: "wishlist", component: WishlistComponent },
+  { path: "singleproduct", component: SingleproductComponent },
   { path: "**", component: NotfoundComponent }
 ];
 
