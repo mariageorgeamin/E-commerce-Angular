@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ["", [Validators.required, Validators.email]],
+      firstName: ["", Validators.required],
       password: ["", [Validators.required, Validators.minLength(6)]]
     });
   }
@@ -35,7 +35,8 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.router.navigateByUrl("home");
+    localStorage.setItem("name", this.loginForm.value["firstName"]);
+    this.router.navigate(["home"]);
     // alert("SUCCESS!! :-)\n\n" + JSON.stringify(this.loginForm.value));
   }
 }
