@@ -25,7 +25,7 @@
                         </a> -->
                         <h4 class="card-title">
                             <strong>
-                <a href="singleproduct">{{ product.name }}</a>
+                {{ product.name }}
               </strong>
                         </h4>
                         <!-- Description -->
@@ -37,6 +37,10 @@
                 <strong>{{ product.price }} L.E</strong>
               </span>
                             <span class="float-right">
+                <a href="singleproduct/{{product.id}}" class="active" data-toggle="tooltip" data-placement="top"
+                  title="Product info">
+                  <i class="fas fa-info-circle ml-3"></i>
+                </a>
                 <a href="cart" data-toggle="tooltip" data-placement="top" title="Add to Cart">
                   <i class="fas fa-shopping-cart grey-text ml-3"></i>
                 </a>

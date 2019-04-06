@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: "cart", component: CartComponent },
   { path: "signup", component: SignupComponent },
   { path: "wishlist", component: WishlistComponent },
-  { path: "singleproduct", component: SingleproductComponent },
+  { path: "singleproduct/:id", component: SingleproductComponent },
   { path: "**", component: NotfoundComponent }
 ];
 

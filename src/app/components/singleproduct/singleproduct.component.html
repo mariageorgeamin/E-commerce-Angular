@@ -1,3 +1,48 @@
-<p>
-  singleproduct works!
-</p>
+<app-header></app-header>
+<div class="container">
+    <!-- Section: Products v.1 -->
+    <section class="text-center my-5">
+        <!-- Grid row -->
+        <div class="row align-items-center h-100">
+
+            <!-- Grid column -->
+            <div class="col-6 mx-auto">
+                <!-- Card -->
+                <div class="card card-cascade narrower card-ecommerce">
+                    <!-- Card image -->
+                    <div class="view view-cascade overlay">
+                        <img src="{{ product?.imgUrl }}" class="card-img-top" alt="sample photo">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <!-- Card image -->
+                    <!-- Card content -->
+                    <div class="card-body card-body-cascade text-center">
+                        <!-- Category & Title -->
+                        <!-- <a href="" class="grey-text">
+                            <h5>Denim</h5>
+                        </a> -->
+                        <h4 class="card-title">
+                            <strong>
+                {{product?.name}}
+              </strong>
+                        </h4>
+                        <!-- Description -->
+                        <!-- Card footer -->
+                        <div class="card-footer px-1">
+                            <span class="float-left font-weight-bold">
+                <strong>{{ product?.price }} L.E</strong>
+              </span>
+                        </div>
+                    </div>
+                    <!-- Card content -->
+                </div>
+                <!-- Card -->
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+        </div>
+    </section>
+</div>
