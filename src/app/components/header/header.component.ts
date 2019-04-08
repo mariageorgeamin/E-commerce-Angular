@@ -31,8 +31,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {}
   logout() {
     localStorage.removeItem("name");
-    localStorage.removeItem("cart");
-    localStorage.removeItem("wishlist");
     this.stream.setName(localStorage.getItem("name"));
     this.router.navigate([""]);
   }
