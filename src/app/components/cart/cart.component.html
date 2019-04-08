@@ -1,3 +1,51 @@
-<p>
-  cart works!
-</p>
+<br>
+<div class="container" id="cart">
+    <div class="card shopping-cart">
+        <div class="card-header bg-dark text-light">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shipping cart
+            <a href="home" class="btn btn-outline-info btn-sm pull-right">Continue shopping</a>
+            <div class="clearfix"></div>
+        </div>
+        <div class="card-body" *ngFor="let item of items">
+            <!-- PRODUCT -->
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-2 text-center">
+                    <img class="img-responsive" src="{{item.product.imgUrl}}" alt="prewiew" height="120">
+                </div>
+                <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                    <h4 class="product-name"><strong>{{item.product.name}}</strong></h4>
+                    <h4>
+                        <small>Price per item: {{item.product.price}} L.E</small>
+                    </h4>
+                </div>
+                <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                    <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+                        <h6><strong> {{item.product.price * item.quantity}} <span class="text-muted">L.E</span></strong></h6>
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4">
+                        <div class="text-center">
+                            Qty: {{item.quantity}}
+                        </div>
+                    </div>
+                    <div class="col-2 col-sm-2 col-md-2 text-right">
+                        <button type="button" (click)="remove(item.product.id)" class="btn btn-outline-danger btn-xs">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <!-- END PRODUCT -->
+        </div>
+        <div class="card-footer">
+            <div class="pull-right" style="margin: 10px">
+                <a href="cart#" class="btn btn-success pull-right">Checkout</a>
+                <div class="pull-right" style="margin: 5px">
+                    Total price: <b>{{total}} L.E for {{totalQty}} items</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
