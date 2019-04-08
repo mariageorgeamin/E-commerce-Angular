@@ -1,48 +1,39 @@
-<app-header></app-header>
-<div class="container">
-    <!-- Section: Products v.1 -->
-    <section class="text-center my-5">
-        <!-- Grid row -->
-        <div class="row align-items-center h-100">
+<main class="mt-5 pt-4">
+    <div class="container dark-grey-text">
+        <div class="row wow fadeIn">
+            <div class="col-6">
+                <img src="{{product?.imgUrl}}" class="img-thumbnail img-fluid" width="250px" alt="">
+            </div>
+            <div class="col-6">
+                <div class="p-4">
 
-            <!-- Grid column -->
-            <div class="col-6 mx-auto">
-                <!-- Card -->
-                <div class="card card-cascade narrower card-ecommerce">
-                    <!-- Card image -->
-                    <div class="view view-cascade overlay">
-                        <img src="{{ product?.imgUrl }}" class="card-img-top" alt="sample photo">
-                        <a>
-                            <div class="mask rgba-white-slight"></div>
+                    <div class="mb-3">
+                        <a href="javascript:void(0)">
+                            <span class="badge purple mr-1">Category 2</span>
+                        </a>
+                        <a href="javascript:void(0)">
+                            <span class="badge blue mr-1">New</span>
+                        </a>
+                        <a href="javascript:void(0)">
+                            <span class="badge red mr-1">Bestseller</span>
                         </a>
                     </div>
-                    <!-- Card image -->
-                    <!-- Card content -->
-                    <div class="card-body card-body-cascade text-center">
-                        <!-- Category & Title -->
-                        <!-- <a href="" class="grey-text">
-                            <h5>Denim</h5>
-                        </a> -->
-                        <h4 class="card-title">
-                            <strong>
-                {{product?.name}}
-              </strong>
-                        </h4>
-                        <!-- Description -->
-                        <!-- Card footer -->
-                        <div class="card-footer px-1">
-                            <span class="float-left font-weight-bold">
-                <strong>{{ product?.price }} L.E</strong>
-              </span>
-                        </div>
-                    </div>
-                    <!-- Card content -->
-                </div>
-                <!-- Card -->
-            </div>
-            <!-- Grid column -->
 
-            <!-- Grid column -->
+                    <p class="lead">
+                        <span class="mr-1">
+            </span>
+                        <span>{{product?.price}} L.E</span>
+                    </p>
+
+                    <p class="lead font-weight-bold">{{product?.name}}</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa sint voluptatibus! Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
+
+                </div>
+
+            </div>
         </div>
-    </section>
-</div>
+        <hr>
+
+    </div>
+</main>

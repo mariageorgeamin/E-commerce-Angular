@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router, ActivatedRoute } from "@angular/router";
+import { Product } from "src/app/product";
+import { ProductService } from "src/app/services/product.service";
 
 @Component({
   selector: "app-singleproduct",
@@ -8,18 +10,13 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ["./singleproduct.component.scss"]
 })
 export class SingleproductComponent implements OnInit {
-  products: object[];
-  product: object;
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  product: Product;
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService
+  ) {}
 
   ngOnInit() {
-    this.http.get("../../../assets/products.json").subscribe(data => {
-      this.products = data["arrayOfProducts"];
-      this.products.forEach((product: Object) => {
-        if (product["id"] == this.route.snapshot.params.id) {
-          this.product = product;
-        }
-      });
-    });
+    this.product = this.productService.find(this.route.snapshot.params.id);
   }
 }
