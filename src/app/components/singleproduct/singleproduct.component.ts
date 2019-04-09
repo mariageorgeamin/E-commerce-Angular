@@ -13,10 +13,14 @@ export class SingleproductComponent implements OnInit {
   product: Product;
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.product = this.productService.find(this.route.snapshot.params.id);
+    if (!this.product) {
+      this.router.navigate(["notfound"]);
+    }
   }
 }
