@@ -1,38 +1,28 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { Item } from "../item";
+import { CartService } from "./cart.service";
+import { AuthService } from "./auth.service";
+import { WishlistService } from "./wishlist.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class StreamService {
-  private items: Item[] = [];
-  private total: number = 0;
-  private totalQty: number;
   private name: BehaviorSubject<string> = new BehaviorSubject("");
+  private authenticated: BehaviorSubject<string> = new BehaviorSubject("");
   private cartCount: BehaviorSubject<string> = new BehaviorSubject("");
   private wishListCount: BehaviorSubject<string> = new BehaviorSubject("");
-  constructor() {
-    this.name.next(localStorage.getItem("name"));
 
-    this.total = 0;
-    this.items = [];
-    this.totalQty = 0;
-    let cart = JSON.parse(localStorage.getItem("cart"));
-    if (cart) {
-      for (var i = 0; i < cart.length; i++) {
-        let item = cart[i];
-        this.items.push({
-          product: item.product,
-          quantity: item.quantity
-        });
-        this.total += item.product.price * item.quantity;
-        this.totalQty += item.quantity;
-      }
-    }
-    this.cartCount.next(this.totalQty.toString());
-    let wishListproducts = JSON.parse(localStorage.getItem("wishlist")) || [];
-    this.wishListCount.next(wishListproducts.length);
+  constructor(
+    private cartService: CartService,
+    private auth: AuthService,
+    private wishlistService: WishlistService
+  ) {
+    this.name.next(localStorage.getItem("name"));
+    this.cartCount.next(this.cartService.calculateTotalItems().toString());
+    this.wishListCount.next(this.wishlistService.calculateTotal().toString());
+    this.authenticated.next(this.auth.getIsAuthenticated().toString());
   }
   setName(val?: string): void {
     this.name.next(val);
@@ -52,5 +42,13 @@ export class StreamService {
   }
   getwishListCount() {
     return this.wishListCount.asObservable();
+  }
+
+  setAuthenticated(val?: string): void {
+    this.authenticated.next(val);
+  }
+
+  getAuthenticated() {
+    return this.authenticated.asObservable();
   }
 }
