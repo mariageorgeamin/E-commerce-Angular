@@ -28,7 +28,10 @@
                     <p class="lead font-weight-bold">{{product?.name}}</p>
 
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa sint voluptatibus! Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
-
+                    <div class="row">
+                        <button class="btn btn-dark col-3" style="margin-right:20px;margin-left:20px;" (click)="addToCart(product?.id)"><i class="fas fa-shopping-cart"></i> Add to cart</button>
+                        <button class="btn btn-dark col-3" style="margin-right:20px;margin-left:20px;" (click)="wishlist(product?.id)"><i class="fas fa-heart"></i> Add wishlist</button>
+                    </div>
                 </div>
 
             </div>

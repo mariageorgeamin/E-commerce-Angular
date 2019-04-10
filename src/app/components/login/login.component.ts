@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { StreamService } from "src/app/services/stream.service";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-login",
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private stream: StreamService
+    private stream: StreamService,
+    private auth: AuthService
   ) {}
 
   public navigateTo(path: string): void {
@@ -39,8 +41,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
-    // localStorage.setItem("name", this.loginForm.value["firstName"]);
+    this.stream.setAuthenticated("true");
     localStorage.setItem("name", this.loginForm.value["firstName"]);
     this.stream.setName(localStorage.getItem("name"));
     this.router.navigate(["home"]);

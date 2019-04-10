@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MustMatch } from "src/app/_helpers/must-match.validators";
 import { Router } from "@angular/router";
+import { StreamService } from "src/app/services/stream.service";
 
 // import custom validator to validate that password and confirm password fields match
 
@@ -13,7 +14,11 @@ import { Router } from "@angular/router";
 export class SignupComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
-  constructor(private router: Router, private formBuilder: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private stream: StreamService
+  ) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group(
@@ -43,7 +48,9 @@ export class SignupComponent implements OnInit {
     }
 
     // alert("SUCCESS!! :-)\n\n" + JSON.stringify(this.registerForm.value));
+    this.stream.setAuthenticated("true");
     localStorage.setItem("name", this.registerForm.value["firstName"]);
+    this.stream.setName(localStorage.getItem("name"));
     this.router.navigate(["home"]);
   }
 }
